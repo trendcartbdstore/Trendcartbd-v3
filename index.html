@@ -1,153 +1,168 @@
- 
 <!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trend Cart BD | Smart Products, Smart Living</title>
-    
-    <!-- SEO & Open Graph Tags for Facebook Ads -->
-    <meta name="description" content="Trend Cart BD - প্রিমিয়াম কোয়ালিটির স্মার্ট গ্যাজেট এবং লাইফস্টাইল প্রোডাক্ট। দেশজুড়ে ক্যাশ অন ডেলিভারি।">
-    <meta property="og:title" content="Trend Cart BD | Smart Products, Smart Living">
-    <meta property="og:description" content="প্রিমিয়াম কোয়ালিটির পণ্য কিনুন সেরা মূল্যে।">
-    <meta property="og:image" content="https://trendcartbd.netlify.app/og-image.jpg">
-    <meta property="og:url" content="https://trendcartbd.netlify.app">
-    
-    <!-- Google Fonts & Tailwind CSS for Rapid Premium UI -->
+    <title>Trend Cart BD | Daraz Style Premium Mall</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans transition-colors duration-300" id="body">
+<body class="bg-[#f4f4f6] text-slate-800">
 
-    <!-- ⚡ Top Announcement / Flash Sale Bar -->
-    <div class="bg-gradient-to-r from-orange-500 to-amber-500 text-white text-center py-2 text-xs md:text-sm font-medium tracking-wide">
-        🔥 ফ্ল্যাশ সেল চলছে! যেকোনো অর্ডারে আকর্ষণীয় উপহার! 🕒 বাকি আছে: <span id="countdown">02:45:10</span>
+    <!-- 🔝 Top Bar -->
+    <div class="bg-[#f4f4f6] text-xs text-gray-600 border-b border-gray-200 hidden md:block py-1.5">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between">
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-orange-500">Become a Seller</a>
+                <a href="#" class="hover:text-orange-500">Help & Support</a>
+            </div>
+            <div class="flex space-x-4">
+                <span class="cursor-pointer hover:text-orange-500"><i class="fas fa-globe mr-1"></i>বাং / EN</span>
+                <span>Track My Order</span>
+            </div>
+        </div>
     </div>
 
-    <!-- 🍏 Apple-Style Glassmorphism Navbar -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/75 border-b border-slate-200/50">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-            <!-- Brand Logo / Name -->
-            <div class="flex items-center space-x-2">
-                <span class="text-2xl font-black tracking-tight bg-gradient-to-r from-blue-700 to-orange-500 bg-clip-text text-transparent">
-                    Trend Cart BD
-                </span>
+    <!-- 🔍 Daraz-Style Main Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between gap-4">
+            <!-- Logo -->
+            <a href="#" onclick="showPage('home')" class="text-2xl md:text-3xl font-black tracking-tight text-[#002baf] flex-shrink-0">
+                Trend<span class="text-[#ff6a00]">Cart</span><span class="text-xs font-bold text-gray-400 block md:inline md:ml-1">BD</span>
+            </a>
+
+            <!-- Mega Search Bar -->
+            <div class="flex-1 max-w-2xl relative">
+                <div class="flex">
+                    <input type="text" id="mainSearch" placeholder="দারাজের মতো স্মার্ট গ্যাজেট বা লাইফস্টাইল পণ্য খুঁজুন..." class="w-full px-4 py-2.5 bg-[#eff0f5] rounded-l-md focus:outline-none focus:ring-1 focus:ring-[#ff6a00] text-sm">
+                    <button class="bg-[#ff6a00] text-white px-6 rounded-r-md hover:bg-orange-600 transition"><i class="fas fa-search"></i></button>
+                </div>
             </div>
 
-            <!-- Smart Search Bar (Desktop) -->
-            <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
-                <input type="text" id="searchBar" placeholder="স্মার্ট প্রোডাক্ট খুঁজুন..." class="w-full px-4 py-2 rounded-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-slate-100/50 text-sm">
-                <button class="absolute right-3 top-2.5 text-slate-400"><i class="fas fa-search"></i></button>
-            </div>
-
-            <!-- Actions Icons -->
-            <div class="flex items-center space-x-4">
-                <button id="langToggle" class="text-xs font-bold bg-slate-200 px-2 py-1 rounded">EN</button>
-                <button id="darkModeToggle" class="text-slate-600 text-lg"><i class="fas fa-moon"></i></button>
-                <button class="text-slate-600 text-lg relative" onclick="toggleCart()">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span id="cartCount" class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+            <!-- Cart & Icons -->
+            <div class="flex items-center space-x-6 flex-shrink-0">
+                <button onclick="toggleCart()" class="relative text-gray-700 hover:text-[#ff6a00] text-2xl transition">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount" class="absolute -top-2 -right-2 bg-[#ff6a00] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
                 </button>
+                <button onclick="showPage('admin-profile')" class="text-gray-700 hover:text-blue-700 text-xl hidden md:block"><i class="fas fa-user-circle"></i></button>
             </div>
         </div>
     </header>
 
-    <!-- 📱 Main Layout Containers -->
+    <!-- 🗂️ Categories & Mega Menu -->
+    <nav class="bg-white border-b border-gray-200 hidden md:block shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-8 text-sm font-medium py-2.5">
+            <a href="#" onclick="filterCategory('all')" class="text-[#ff6a00]">সব পণ্য (All Mall)</a>
+            <a href="#" onclick="filterCategory('gadget')" class="text-gray-600 hover:text-[#ff6a00]">স্মার্ট গ্যাজেটস</a>
+            <a href="#" onclick="filterCategory('lifestyle')" class="text-gray-600 hover:text-[#ff6a00]">লাইফস্টাইল</a>
+            <a href="#" onclick="filterCategory('watch')" class="text-gray-600 hover:text-[#ff6a00]">স্মার্ট ওয়াচ</a>
+        </div>
+    </nav>
+
+    <!-- 📱 মাল্টি-পেজ কন্টেইনার সমূহ (ডাইনামিক ভিউ) -->
     <main class="max-w-7xl mx-auto px-4 py-6">
-        
-        <!-- Hero Banner Showcase -->
-        <section class="mb-10 rounded-3xl overflow-hidden shadow-xl relative bg-gradient-to-br from-blue-900 to-slate-900 text-white p-8 md:p-16 flex flex-col justify-center min-h-[350px]">
-            <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000');"></div>
-            <div class="relative z-10 max-w-lg">
-                <span class="bg-orange-500 text-xs font-bold uppercase px-3 py-1 rounded-full mb-4 inline-block">New Arrival</span>
-                <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">Smart Living, <br><span class="text-orange-400">Smart Choice</span></h1>
-                <p class="text-slate-300 text-sm md:text-base mb-6">আপনার দৈনন্দিন জীবনকে সহজ করতে ট্রেন্ডি ও প্রিমিয়াম গ্যাজেট কালেকশন।</p>
-                <a href="#shop" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-full inline-block transition shadow-lg shadow-blue-600/30">এখনই শপ করুন</a>
+
+        <!-- 🏠 ১. হোম পেজ (দারাজ স্টাইল ব্যানার ও ফ্ল্যাশ সেল) -->
+        <section id="page-home" class="page-view">
+            <!-- Daraz Banner Slider Carousel (Static representation for fast load) -->
+            <div class="rounded-xl overflow-hidden shadow-md mb-6 bg-gradient-to-r from-[#002baf] to-indigo-900 text-white p-6 md:p-12 flex justify-between items-center min-h-[220px] md:min-h-[320px]">
+                <div class="max-w-md">
+                    <span class="bg-[#ff6a00] text-xs px-2 py-1 rounded font-bold uppercase">Trend Cart Mall</span>
+                    <h2 class="text-2xl md:text-4xl font-extrabold mt-3 mb-2 leading-tight">স্মার্ট গ্যাজেটের ধামাকা মেলা!</h2>
+                    <p class="text-gray-200 text-xs md:text-sm mb-4">দারাজ কোয়ালিটি, কিন্তু আরও কম মূল্যে সরাসরি আপনার হাতে।</p>
+                    <button onclick="filterCategory('all')" class="bg-white text-[#002baf] font-bold px-5 py-2.5 rounded-md shadow hover:bg-gray-100 text-xs md:text-sm transition">অফার দেখুন</button>
+                </div>
+                <i class="fas fa-bolt text-7xl text-yellow-400 opacity-20 hidden md:block"></i>
+            </div>
+
+            <!-- ⚡ Flash Sale Dynamic Counter Section -->
+            <div class="bg-white rounded-xl p-4 shadow-sm mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <h3 class="text-[#ff6a00] font-black text-lg uppercase tracking-wider"><i class="fas fa-bolt mr-1"></i> Flash Sale</h3>
+                    <div id="flash-timer" class="text-sm font-bold text-white flex space-x-1">
+                        <span class="bg-gray-800 px-2 py-1 rounded" id="thour">02</span>
+                        <span class="text-gray-800">:</span>
+                        <span class="bg-gray-800 px-2 py-1 rounded" id="tmin">45</span>
+                        <span class="text-gray-800">:</span>
+                        <span class="bg-gray-800 px-2 py-1 rounded" id="tsec">10</span>
+                    </div>
+                </div>
+                <span class="text-xs text-gray-500 font-semibold">১০০% আসল প্রোডাক্টের গ্যারান্টি</span>
+            </div>
+
+            <!-- 📦 Daraz Grid Layout (২ কলাম মোবাইলে, ৪ বা ৬ কলাম ডেসকিলটপে) -->
+            <div class="mb-4 flex items-center justify-between">
+                <h4 class="text-lg font-bold text-gray-800">আপনার জন্য প্রস্তাবিত পণ্য (Just For You)</h4>
+            </div>
+            <div id="darazProductGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
+                <!-- আপলোড করা পণ্য এখানে ফেসবুকের মতো অটো আসবে -->
             </div>
         </section>
 
-        <!-- 🛍️ Product Grid Section -->
-        <section id="shop" class="mb-12">
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="text-2xl font-bold tracking-tight">আমাদের ধামাকা প্রোডাক্টস</h2>
-                <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">AI Recommended</span>
-            </div>
-            
-            <!-- Products Card Container (Will load from Google Sheets via JS) -->
-            <div id="productGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                <!-- Loading State placeholder -->
-                <div class="text-center col-span-full py-12 text-slate-400 animate-pulse">
-                    <i class="fas fa-spinner fa-spin text-3xl mb-2 text-blue-600"></i>
-                    <p>প্রোডাক্ট লোড হচ্ছে, দয়া করে অপেক্ষা করুন...</p>
-                </div>
+
+        <!-- 📦 ২. প্রোডাক্ট ডিটেইলস পেজ (Daraz Style Detail View) -->
+        <section id="page-details" class="page-view hidden bg-white rounded-xl p-4 md:p-8 shadow-sm">
+            <button onclick="showPage('home')" class="text-sm text-[#002baf] font-bold mb-4 inline-block"><i class="fas fa-arrow-left mr-1"></i> হোম পেজে ফিরে যান</button>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="dynamicDetailsContainer">
+                <!-- ডাটা জাভাস্ক্রিপ্ট থেকে জেনারেট হবে -->
             </div>
         </section>
 
     </main>
 
-    <!-- 🛒 Floating & Slide-over Shopping Cart (Glassmorphism) -->
-    <div id="cartModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex justify-end">
-        <div class="w-full max-w-md bg-white/90 backdrop-blur-md h-full shadow-2xl p-6 flex flex-col justify-between border-l border-white/20">
+    <!-- 🛒 Floating Sidebar Cart (Daraz Style Drawer) -->
+    <div id="cartModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs hidden flex justify-end">
+        <div class="w-full max-w-md bg-white h-full shadow-2xl p-4 flex flex-col justify-between">
             <div>
-                <div class="flex justify-between items-center mb-6 border-b pb-4">
-                    <h3 class="text-xl font-bold"><i class="fas fa-shopping-basket text-blue-600 mr-2"></i>আপনার ব্যাগ</h3>
-                    <button onclick="toggleCart()" class="text-slate-400 hover:text-slate-600 text-xl"><i class="fas fa-times"></i></button>
+                <div class="flex justify-between items-center border-b pb-3 mb-4">
+                    <h3 class="text-lg font-bold text-gray-800">মাই কার্ট (<span id="cartCountSide">0</span>)</h3>
+                    <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 text-xl"><i class="fas fa-times"></i></button>
                 </div>
-                <div id="cartItems" class="space-y-4 overflow-y-auto max-h-[60vh]">
-                    <!-- Cart items render dynamically -->
-                    <p class="text-slate-400 text-center py-8">আপনার কার্টটি একদম খালি!</p>
+                <div id="cartItems" class="space-y-4 overflow-y-auto max-h-[70vh]">
+                    <!-- কার্ট আইটেম -->
                 </div>
             </div>
-            
-            <div class="border-t pt-4">
-                <div class="flex justify-between font-bold text-lg mb-4">
-                    <span>মোট টাকা:</span>
-                    <span>৳ <span id="cartTotal">0</span></span>
+            <div class="border-t pt-4 bg-gray-50 -mx-4 -mb-4 p-4">
+                <div class="flex justify-between text-base font-bold mb-4 text-gray-800">
+                    <span>মোট সাবটোটাল:</span>
+                    <span class="text-[#ff6a00]">৳ <span id="cartTotal">0</span></span>
                 </div>
-                <button onclick="openCheckout()" class="w-full bg-gradient-to-r from-blue-700 to-blue-600 text-white font-bold py-3.5 rounded-xl hover:opacity-95 transition shadow-lg shadow-blue-600/20">অর্ডার কনফার্ম করুন (Next)</button>
+                <button onclick="openCheckout()" class="w-full bg-[#ff6a00] hover:bg-orange-600 text-white font-bold py-3 rounded-md transition shadow-md">চেকআউট করতে এগিয়ে যান</button>
             </div>
         </div>
     </div>
 
-    <!-- 💳 Professional Checkout Modal -->
-    <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-6 relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeCheckout()" class="absolute right-4 top-4 text-slate-400 text-xl"><i class="fas fa-times"></i></button>
-            <h3 class="text-xl font-bold mb-4 text-center text-blue-700">📦 ডেলিভারি ও পেমেন্ট তথ্য</h3>
-            
-            <form id="checkoutForm" onsubmit="handleOrderSubmit(event)" class="space-y-4">
+    <!-- 💳 Checkout Modal -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeCheckout()" class="absolute right-4 top-4 text-gray-400 text-xl"><i class="fas fa-times"></i></button>
+            <h3 class="text-lg font-bold mb-4 text-center text-gray-800 border-b pb-2">📋 শিপিং ও পেমেন্ট অর্ডার ফর্ম</h3>
+            <form id="checkoutForm" onsubmit="handleOrderSubmit(event)" class="space-y-3">
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 mb-1">আপনার নাম *</label>
-                    <input type="text" id="custName" required class="w-full px-4 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-600 mb-1">মোবাইল নম্বর *</label>
-                    <input type="tel" id="custPhone" required class="w-full px-4 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none">
+                    <label class="block text-xs font-bold text-gray-600 mb-1">ক্রেতার নাম *</label>
+                    <input type="text" id="custName" required class="w-full px-3 py-2 rounded border border-gray-300 outline-none focus:border-orange-500 text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 mb-1">পূর্ণাঙ্গ ঠিকানা *</label>
-                    <textarea id="custAddress" required rows="2" class="w-full px-4 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none"></textarea>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">মোবাইল নাম্বার *</label>
+                    <input type="tel" id="custPhone" required class="w-full px-3 py-2 rounded border border-gray-300 outline-none focus:border-orange-500 text-sm">
                 </div>
-                
-                <div class="bg-slate-50 p-4 rounded-2xl border">
-                    <p class="text-xs font-bold text-slate-600 mb-2">পেমেন্ট পদ্ধতি নির্বাচন করুন:</p>
-                    <div class="grid grid-cols-2 gap-2">
-                        <label class="flex items-center space-x-2 border p-2 rounded-xl bg-white cursor-pointer hover:border-blue-600"><input type="radio" name="payment" value="Cash on Delivery" checked> <span class="text-sm font-medium">ক্যাশ অন ডেলিভারি</span></label>
-                        <label class="flex items-center space-x-2 border p-2 rounded-xl bg-white cursor-pointer hover:border-pink-500"><input type="radio" name="payment" value="bKash"> <span class="text-sm font-medium text-pink-600">বিকাশ (ম্যানুয়াল)</span></label>
-                    </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1">পূর্ণাঙ্গ ঠিকানা *</label>
+                    <textarea id="custAddress" required rows="2" class="w-full px-3 py-2 rounded border border-gray-300 outline-none focus:border-orange-500 text-sm"></textarea>
                 </div>
-
-                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-orange-500/20">👉 হোয়াটসঅ্যাপে অর্ডার পাঠান</button>
+                <div class="bg-gray-50 p-3 rounded border text-xs">
+                    <p class="font-bold text-gray-700 mb-1">ডেলিভারি মেথড:</p>
+                    <label class="flex items-center space-x-2 p-1.5 cursor-pointer"><input type="radio" name="payment" value="COD" checked> <span>ক্যাশ অন ডেলিভারি (সারা বাংলাদেশ)</span></label>
+                </div>
+                <button type="submit" class="w-full bg-[#002baf] text-white font-bold py-3 rounded-md mt-2 transition hover:bg-blue-800">👉 হোয়াটসঅ্যাপে অর্ডার ফাইনাল করুন</button>
             </form>
         </div>
     </div>
 
-    <!-- 💬 Floating WhatsApp Chat Button -->
-    <a href="https://wa.me/8801315121561" target="_blank" class="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition text-2xl">
+    <!-- 💬 Live WhatsApp Float -->
+    <a href="https://wa.me/8801315121561" target="_blank" class="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl text-2xl hover:scale-105 transition">
         <i class="fab fa-whatsapp"></i>
     </a>
 
