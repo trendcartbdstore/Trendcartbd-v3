@@ -1,0 +1,22 @@
+ 
+backend:
+  name: github
+  repo: trendcartbdstore/trendcartbd # আপনার GitHub ইউজারনেম/রিপোজিটরি নাম
+  branch: main
+
+media_folder: "images" # ছবি যেখানে সেভ হবে
+public_folder: "/images"
+
+collections:
+  - name: "products"
+    label: "প্রোডাক্টস (Products)"
+    folder: "data/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Product ID", name: "id", widget: "number"}
+      - {label: "Product Title", name: "title", widget: "string"}
+      - {label: "Price (৳)", name: "price", widget: "number"}
+      - {label: "Old Price (৳)", name: "oldPrice", widget: "number", required: false}
+      - {label: "Product Image", name: "image", widget: "image"}
+      - {label: "Badge (e.g. Hot/Sale)", name: "badge", widget: "string", required: false}
