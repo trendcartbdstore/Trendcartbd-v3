@@ -1,0 +1,156 @@
+ 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trend Cart BD | Smart Products, Smart Living</title>
+    
+    <!-- SEO & Open Graph Tags for Facebook Ads -->
+    <meta name="description" content="Trend Cart BD - প্রিমিয়াম কোয়ালিটির স্মার্ট গ্যাজেট এবং লাইফস্টাইল প্রোডাক্ট। দেশজুড়ে ক্যাশ অন ডেলিভারি।">
+    <meta property="og:title" content="Trend Cart BD | Smart Products, Smart Living">
+    <meta property="og:description" content="প্রিমিয়াম কোয়ালিটির পণ্য কিনুন সেরা মূল্যে।">
+    <meta property="og:image" content="https://trendcartbd.netlify.app/og-image.jpg">
+    <meta property="og:url" content="https://trendcartbd.netlify.app">
+    
+    <!-- Google Fonts & Tailwind CSS for Rapid Premium UI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans transition-colors duration-300" id="body">
+
+    <!-- ⚡ Top Announcement / Flash Sale Bar -->
+    <div class="bg-gradient-to-r from-orange-500 to-amber-500 text-white text-center py-2 text-xs md:text-sm font-medium tracking-wide">
+        🔥 ফ্ল্যাশ সেল চলছে! যেকোনো অর্ডারে আকর্ষণীয় উপহার! 🕒 বাকি আছে: <span id="countdown">02:45:10</span>
+    </div>
+
+    <!-- 🍏 Apple-Style Glassmorphism Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/75 border-b border-slate-200/50">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <!-- Brand Logo / Name -->
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-black tracking-tight bg-gradient-to-r from-blue-700 to-orange-500 bg-clip-text text-transparent">
+                    Trend Cart BD
+                </span>
+            </div>
+
+            <!-- Smart Search Bar (Desktop) -->
+            <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+                <input type="text" id="searchBar" placeholder="স্মার্ট প্রোডাক্ট খুঁজুন..." class="w-full px-4 py-2 rounded-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-slate-100/50 text-sm">
+                <button class="absolute right-3 top-2.5 text-slate-400"><i class="fas fa-search"></i></button>
+            </div>
+
+            <!-- Actions Icons -->
+            <div class="flex items-center space-x-4">
+                <button id="langToggle" class="text-xs font-bold bg-slate-200 px-2 py-1 rounded">EN</button>
+                <button id="darkModeToggle" class="text-slate-600 text-lg"><i class="fas fa-moon"></i></button>
+                <button class="text-slate-600 text-lg relative" onclick="toggleCart()">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cartCount" class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 📱 Main Layout Containers -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+        
+        <!-- Hero Banner Showcase -->
+        <section class="mb-10 rounded-3xl overflow-hidden shadow-xl relative bg-gradient-to-br from-blue-900 to-slate-900 text-white p-8 md:p-16 flex flex-col justify-center min-h-[350px]">
+            <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000');"></div>
+            <div class="relative z-10 max-w-lg">
+                <span class="bg-orange-500 text-xs font-bold uppercase px-3 py-1 rounded-full mb-4 inline-block">New Arrival</span>
+                <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">Smart Living, <br><span class="text-orange-400">Smart Choice</span></h1>
+                <p class="text-slate-300 text-sm md:text-base mb-6">আপনার দৈনন্দিন জীবনকে সহজ করতে ট্রেন্ডি ও প্রিমিয়াম গ্যাজেট কালেকশন।</p>
+                <a href="#shop" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-full inline-block transition shadow-lg shadow-blue-600/30">এখনই শপ করুন</a>
+            </div>
+        </section>
+
+        <!-- 🛍️ Product Grid Section -->
+        <section id="shop" class="mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold tracking-tight">আমাদের ধামাকা প্রোডাক্টস</h2>
+                <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">AI Recommended</span>
+            </div>
+            
+            <!-- Products Card Container (Will load from Google Sheets via JS) -->
+            <div id="productGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <!-- Loading State placeholder -->
+                <div class="text-center col-span-full py-12 text-slate-400 animate-pulse">
+                    <i class="fas fa-spinner fa-spin text-3xl mb-2 text-blue-600"></i>
+                    <p>প্রোডাক্ট লোড হচ্ছে, দয়া করে অপেক্ষা করুন...</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 🛒 Floating & Slide-over Shopping Cart (Glassmorphism) -->
+    <div id="cartModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex justify-end">
+        <div class="w-full max-w-md bg-white/90 backdrop-blur-md h-full shadow-2xl p-6 flex flex-col justify-between border-l border-white/20">
+            <div>
+                <div class="flex justify-between items-center mb-6 border-b pb-4">
+                    <h3 class="text-xl font-bold"><i class="fas fa-shopping-basket text-blue-600 mr-2"></i>আপনার ব্যাগ</h3>
+                    <button onclick="toggleCart()" class="text-slate-400 hover:text-slate-600 text-xl"><i class="fas fa-times"></i></button>
+                </div>
+                <div id="cartItems" class="space-y-4 overflow-y-auto max-h-[60vh]">
+                    <!-- Cart items render dynamically -->
+                    <p class="text-slate-400 text-center py-8">আপনার কার্টটি একদম খালি!</p>
+                </div>
+            </div>
+            
+            <div class="border-t pt-4">
+                <div class="flex justify-between font-bold text-lg mb-4">
+                    <span>মোট টাকা:</span>
+                    <span>৳ <span id="cartTotal">0</span></span>
+                </div>
+                <button onclick="openCheckout()" class="w-full bg-gradient-to-r from-blue-700 to-blue-600 text-white font-bold py-3.5 rounded-xl hover:opacity-95 transition shadow-lg shadow-blue-600/20">অর্ডার কনফার্ম করুন (Next)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 💳 Professional Checkout Modal -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeCheckout()" class="absolute right-4 top-4 text-slate-400 text-xl"><i class="fas fa-times"></i></button>
+            <h3 class="text-xl font-bold mb-4 text-center text-blue-700">📦 ডেলিভারি ও পেমেন্ট তথ্য</h3>
+            
+            <form id="checkoutForm" onsubmit="handleOrderSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">আপনার নাম *</label>
+                    <input type="text" id="custName" required class="w-full px-4 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">মোবাইল নম্বর *</label>
+                    <input type="tel" id="custPhone" required class="w-full px-4 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">পূর্ণাঙ্গ ঠিকানা *</label>
+                    <textarea id="custAddress" required rows="2" class="w-full px-4 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none"></textarea>
+                </div>
+                
+                <div class="bg-slate-50 p-4 rounded-2xl border">
+                    <p class="text-xs font-bold text-slate-600 mb-2">পেমেন্ট পদ্ধতি নির্বাচন করুন:</p>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="flex items-center space-x-2 border p-2 rounded-xl bg-white cursor-pointer hover:border-blue-600"><input type="radio" name="payment" value="Cash on Delivery" checked> <span class="text-sm font-medium">ক্যাশ অন ডেলিভারি</span></label>
+                        <label class="flex items-center space-x-2 border p-2 rounded-xl bg-white cursor-pointer hover:border-pink-500"><input type="radio" name="payment" value="bKash"> <span class="text-sm font-medium text-pink-600">বিকাশ (ম্যানুয়াল)</span></label>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-orange-500/20">👉 হোয়াটসঅ্যাপে অর্ডার পাঠান</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 💬 Floating WhatsApp Chat Button -->
+    <a href="https://wa.me/8801315121561" target="_blank" class="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition text-2xl">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="app.js"></script>
+</body>
+</html>

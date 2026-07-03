@@ -1,0 +1,17 @@
+ 
+{
+  "name": "Trend Cart BD",
+  "short_name": "TrendCart",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#002baf",
+  "theme_color": "#ff6a00",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=192",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
